@@ -14,12 +14,12 @@ namespace ITJZ.SearchHelper.API.Operation
     /// <summary>
     /// 操作的基类，包含基本的验证逻辑
     /// </summary>
-    internal class BaseOperation
+    public class BaseOperation
     {
         /// <summary>
         /// 当前正在操作的用户
         /// </summary>
-        internal ITJZ.SearchHelper.API.Entity.User CurrentUser { get; set; }
+        public ITJZ.SearchHelper.API.Entity.User CurrentUser { get; set; }
 
         public SqlConnection DatabaseConnection { get; private set; }
 

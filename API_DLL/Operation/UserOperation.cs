@@ -15,7 +15,7 @@ namespace ITJZ.SearchHelper.API.Operation
     /// <summary>
     /// 用户操作
     /// </summary>
-    internal class UserOperation : BaseOperation
+    public class UserOperation : BaseOperation
     {
         #region 分类相关操作
 
