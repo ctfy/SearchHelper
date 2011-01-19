@@ -99,12 +99,9 @@ namespace TestProject1
         {
             UserOperation target = new UserOperation(); // TODO: 初始化为适当的值
             target.CurrentUser = login();
-            string guid = string.Empty; // TODO: 初始化为适当的值
-            string expected = string.Empty; // TODO: 初始化为适当的值
-            string actual;
-            actual = target.deleteCategory(guid);
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("验证此测试方法的正确性。");
+            string guid = "category-grid-1"; // TODO: 初始化为适当的值
+            string actual = target.deleteCategory(guid);
+            Assert.IsNotNull(actual);
         }
 
         /// <summary>
