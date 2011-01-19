@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ITJZ.SearchHelper.API.Entity
 {
-    public class Category
+    public class Category : BaseEntity
     {
         public string Uid { get; set; }
         public string Name { get; set; }

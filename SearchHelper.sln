@@ -9,7 +9,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API", "API\API.csproj", "{9
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API_DLL", "API_DLL\API_DLL.csproj", "{4F0D8B81-4871-4958-93B3-A5BE98175787}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestAPI_DLL", "TestAPI_DLL\TestAPI_DLL.csproj", "{C30D63AE-FCAE-4138-8CCC-7F7F84EF1FCB}"
+EndProject
 Global
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = SearchHelper.vsmdi
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Debug|Mixed Platforms = Debug|Mixed Platforms
@@ -39,6 +44,16 @@ Global
 		{4F0D8B81-4871-4958-93B3-A5BE98175787}.Release|Mixed Platforms.Build.0 = Release|x86
 		{4F0D8B81-4871-4958-93B3-A5BE98175787}.Release|x86.ActiveCfg = Release|x86
 		{4F0D8B81-4871-4958-93B3-A5BE98175787}.Release|x86.Build.0 = Release|x86
+		{C30D63AE-FCAE-4138-8CCC-7F7F84EF1FCB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C30D63AE-FCAE-4138-8CCC-7F7F84EF1FCB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C30D63AE-FCAE-4138-8CCC-7F7F84EF1FCB}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{C30D63AE-FCAE-4138-8CCC-7F7F84EF1FCB}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{C30D63AE-FCAE-4138-8CCC-7F7F84EF1FCB}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{C30D63AE-FCAE-4138-8CCC-7F7F84EF1FCB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C30D63AE-FCAE-4138-8CCC-7F7F84EF1FCB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C30D63AE-FCAE-4138-8CCC-7F7F84EF1FCB}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{C30D63AE-FCAE-4138-8CCC-7F7F84EF1FCB}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{C30D63AE-FCAE-4138-8CCC-7F7F84EF1FCB}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

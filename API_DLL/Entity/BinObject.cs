@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ITJZ.SearchHelper.API.Entity
 {
-    public class BinObject
+    public class BinObject : BaseEntity
     {
         public string MD5 { get; set; }
         public string Uid { get; set; }
