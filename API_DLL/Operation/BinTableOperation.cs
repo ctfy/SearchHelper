@@ -6,6 +6,9 @@ using ITJZ.SearchHelper.API.Exception;
 
 namespace ITJZ.SearchHelper.API.Operation
 {
+    /// <summary>
+    /// 2进制表的操作类
+    /// </summary>
     public class BinTableOperation
     {
         /// <summary>

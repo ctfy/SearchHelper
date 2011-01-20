@@ -22,8 +22,14 @@ namespace ITJZ.SearchHelper.API.Operation
         /// </summary>
         public ITJZ.SearchHelper.API.Entity.User CurrentUser { get; set; }
 
+        /// <summary>
+        /// 数据库的连接
+        /// </summary>
         public SqlConnection DatabaseConnection { get; private set; }
 
+        /// <summary>
+        /// 登录验证
+        /// </summary>
         public void needLogin()
         {
             //验证是否登陆
@@ -33,11 +39,22 @@ namespace ITJZ.SearchHelper.API.Operation
             }
         }
 
+        /// <summary>
+        /// 删除某个2进制对象
+        /// </summary>
+        /// <param name="guid">在数据库中存放这个2进制对象的guid</param>
+        /// <returns></returns>
         public bool deleteBinObject(string guid)
         {
             throw new System.Exception("函数未实现");
         }
 
+        /// <summary>
+        /// 保存一个2进制对象
+        /// </summary>
+        /// <param name="guid">保存该对象时用的guid</param>
+        /// <param name="str">字符串类型的2进制对象</param>
+        /// <returns></returns>
         public bool saveBinObject(string guid, string str)
         {
             try
@@ -51,9 +68,23 @@ namespace ITJZ.SearchHelper.API.Operation
             return true;
         }
 
+        /// <summary>
+        /// 保存一个2进制对象
+        /// </summary>
+        /// <param name="guid">保存该对象时用的guid</param>
+        /// <param name="b">2进制内容</param>
+        /// <returns></returns>
         public bool saveBinObject(string guid, byte[] b)
         {
-            throw new System.Exception();
+            try
+            {
+                File.WriteAllBytes(WebConfig.BinObjectSavePath + "\\" + guid, b);
+            }
+            catch (System.Exception)
+            {
+                throw;
+            }
+            return true;
         }
 
 
