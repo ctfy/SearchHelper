@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Data.SqlClient;
-using ITJZ.SearchHelper.API.Exception;
+using ITJZ.SearchHelper.API_DLL.Exception;
 using System.IO;
 using System.Collections;
 using System.Reflection;
 using System.Xml;
 using System.Xml.Linq;
 
-namespace ITJZ.SearchHelper.API.Operation
+namespace ITJZ.SearchHelper.API_DLL.Operation
 {
     /// <summary>
     /// 操作的基类，包含基本的验证逻辑
@@ -20,7 +20,7 @@ namespace ITJZ.SearchHelper.API.Operation
         /// <summary>
         /// 当前正在操作的用户
         /// </summary>
-        public ITJZ.SearchHelper.API.Entity.User CurrentUser { get; set; }
+        public static ITJZ.SearchHelper.API_DLL.Entity.User CurrentUser { get; set; }
 
         /// <summary>
         /// 数据库的连接
@@ -141,7 +141,7 @@ namespace ITJZ.SearchHelper.API.Operation
                 XmlWriter xmlWriter = XmlWriter.Create(sb);
                 mXDocument.WriteTo(xmlWriter);
                 xmlWriter.Flush();
-                return sb.ToString();
+                return sb.ToString().Replace("utf-16", "utf-8");
             }
         }
     }

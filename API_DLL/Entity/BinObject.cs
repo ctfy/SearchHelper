@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace ITJZ.SearchHelper.API.Entity
+namespace ITJZ.SearchHelper.API_DLL.Entity
 {
     /// <summary>
     /// 数据表中无法存放的二进制对象实体的描述类

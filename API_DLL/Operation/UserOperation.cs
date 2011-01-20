@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using ITJZ.SearchHelper.API.Exception;
+using ITJZ.SearchHelper.API_DLL.Exception;
 using System.Data.Common;
 using System.Data.SqlClient;
 using System.Collections;
@@ -10,13 +10,36 @@ using Microsoft.ApplicationBlocks.Data;
 using System.Data;
 using System.Xml.Linq;
 
-namespace ITJZ.SearchHelper.API.Operation
+namespace ITJZ.SearchHelper.API_DLL.Operation
 {
     /// <summary>
     /// 用户操作
     /// </summary>
     public class UserOperation : BaseOperation
     {
+        #region 用户权限和验证相关操作
+        //public string register(string email, string password, string nickname)
+        //{
+
+        //}
+
+        //public string login(string email, string password)
+        //{
+
+        //}
+
+        //public string login(string sessionKey)
+        //{
+
+        //}
+
+        //public string changePassword(string oldPassword, string newPassword)
+        //{
+
+        //}
+
+        #endregion
+
         #region 分类相关操作
 
         /// <summary>

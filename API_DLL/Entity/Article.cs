@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Xml;
 
-namespace ITJZ.SearchHelper.API.Entity
+namespace ITJZ.SearchHelper.API_DLL.Entity
 {
     /// <summary>
     /// 文章实体

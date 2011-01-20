@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using ITJZ.SearchHelper.API.Exception;
+using ITJZ.SearchHelper.API_DLL.Exception;
 
-namespace ITJZ.SearchHelper.API.Operation
+namespace ITJZ.SearchHelper.API_DLL.Operation
 {
     /// <summary>
     /// 2进制表的操作类

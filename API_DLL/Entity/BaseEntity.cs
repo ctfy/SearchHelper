@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace ITJZ.SearchHelper.API.Entity
+namespace ITJZ.SearchHelper.API_DLL.Entity
 {
     /// <summary>
     /// 本项目中实体类的超类，包含实体中一定包含的属性

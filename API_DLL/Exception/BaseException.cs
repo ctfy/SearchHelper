@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace ITJZ.SearchHelper.API.Exception
+namespace ITJZ.SearchHelper.API_DLL.Exception
 {
     /// <summary>
     /// 未知异常

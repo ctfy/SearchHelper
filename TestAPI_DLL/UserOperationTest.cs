@@ -1,9 +1,9 @@
-﻿using ITJZ.SearchHelper.API.Operation;
-using ITJZ.SearchHelper.API.Entity;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Xml.Linq;
 using System.Xml;
+using ITJZ.SearchHelper.API_DLL.Entity;
+using ITJZ.SearchHelper.API_DLL.Operation;
 
 namespace TestProject1
 {
@@ -16,7 +16,7 @@ namespace TestProject1
     {
         User login()
         {
-            ITJZ.SearchHelper.API.Entity.User currentUser = new ITJZ.SearchHelper.API.Entity.User()
+            ITJZ.SearchHelper.API_DLL.Entity.User currentUser = new ITJZ.SearchHelper.API_DLL.Entity.User()
             {
                 ID = 1,
                 Guid = "user-guid-123",
@@ -53,7 +53,7 @@ namespace TestProject1
         public void deleteArticleTest()
         {
             UserOperation target = new UserOperation(); // TODO: 初始化为适当的值
-            target.CurrentUser = login();
+            UserOperation.CurrentUser = login();
             string guid = string.Empty; // TODO: 初始化为适当的值
             string expected = string.Empty; // TODO: 初始化为适当的值
             string actual = target.deleteArticle(guid);
@@ -67,7 +67,7 @@ namespace TestProject1
         public void deleteCategoryTest()
         {
             UserOperation target = new UserOperation(); // TODO: 初始化为适当的值
-            target.CurrentUser = login();
+            UserOperation.CurrentUser = login();
             string guid = "category-grid-1"; // TODO: 初始化为适当的值
             string actual = target.deleteCategory(guid);
             checkXmlResponse(actual);
@@ -80,7 +80,7 @@ namespace TestProject1
         public void getArticleIndexListTest()
         {
             UserOperation target = new UserOperation(); // TODO: 初始化为适当的值
-            target.CurrentUser = login();
+            UserOperation.CurrentUser = login();
             string actual;
             actual = target.getArticleIndexList();
             checkXmlResponse(actual);
@@ -93,8 +93,8 @@ namespace TestProject1
         public void getCategoryListTest()
         {
             UserOperation target = new UserOperation(); // TODO: 初始化为适当的值
-            target.CurrentUser = login();
-            string actual = target.getCategoryList(target.CurrentUser.Guid);
+            UserOperation.CurrentUser = login();
+            string actual = target.getCategoryList(BaseOperation.CurrentUser.Guid);
             checkXmlResponse(actual);
         }
 
@@ -105,7 +105,7 @@ namespace TestProject1
         public void saveArticleTest()
         {
             UserOperation target = new UserOperation(); // TODO: 初始化为适当的值
-            target.CurrentUser = login();
+            UserOperation.CurrentUser = login();
 
             string actual = target.saveArticle(string.Format(@"<?xml version=""1.0"" encoding=""ISO-8859-1""?>
 <article>
@@ -116,7 +116,7 @@ namespace TestProject1
     <title>标题-{3}</title>
     <content>当前时间:{4} </content>
 </article>            
-            ", Guid.NewGuid().ToString(), target.CurrentUser.Guid, "category-guid-567", DateTime.Now, DateTime.Now));
+            ", Guid.NewGuid().ToString(), BaseOperation.CurrentUser.Guid, "category-guid-567", DateTime.Now, DateTime.Now));
 
             checkXmlResponse(actual);
         }
@@ -129,7 +129,7 @@ namespace TestProject1
         {
             UserOperation target = new UserOperation(); // TODO: 初始化为适当的值
 
-            target.CurrentUser = login();
+            UserOperation.CurrentUser = login();
 
             string guid = "category-guid-1"; // TODO: 初始化为适当的值
             string name = "c#"; // TODO: 初始化为适当的值
