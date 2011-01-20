@@ -58,9 +58,6 @@
     <Compile Include="Operation\UserOperation.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Response\ArticleIndexListResponse.cs" />
-    <Compile Include="Response\BaseResponse.cs" />
-    <Compile Include="Response\CategoryListResponse.cs" />
     <Compile Include="Util\SqlHelper.cs" />
     <Compile Include="WebConfig.cs" />
   </ItemGroup>

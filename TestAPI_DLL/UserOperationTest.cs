@@ -2,11 +2,11 @@
 using ITJZ.SearchHelper.API.Entity;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.Xml.Linq;
+using System.Xml;
 
 namespace TestProject1
 {
-    
-    
     /// <summary>
     ///这是 UserOperationTest 的测试类，旨在
     ///包含所有 UserOperationTest 单元测试
@@ -46,36 +46,6 @@ namespace TestProject1
             }
         }
 
-        #region 附加测试特性
-        // 
-        //编写测试时，还可使用以下特性:
-        //
-        //使用 ClassInitialize 在运行类中的第一个测试前先运行代码
-        //[ClassInitialize()]
-        //public static void MyClassInitialize(TestContext testContext)
-        //{
-        //}
-        //
-        //使用 ClassCleanup 在运行完类中的所有测试后再运行代码
-        //[ClassCleanup()]
-        //public static void MyClassCleanup()
-        //{
-        //}
-        //
-        //使用 TestInitialize 在运行每个测试前先运行代码
-        //[TestInitialize()]
-        //public void MyTestInitialize()
-        //{
-        //}
-        //
-        //使用 TestCleanup 在运行完每个测试后运行代码
-        //[TestCleanup()]
-        //public void MyTestCleanup()
-        //{
-        //}
-        //
-        #endregion
-
         /// <summary>
         ///deleteArticle 的测试
         ///</summary>
@@ -86,9 +56,8 @@ namespace TestProject1
             target.CurrentUser = login();
             string guid = string.Empty; // TODO: 初始化为适当的值
             string expected = string.Empty; // TODO: 初始化为适当的值
-            string actual;
-            actual = target.deleteArticle(guid);
-            Assert.IsNotNull(actual);
+            string actual = target.deleteArticle(guid);
+            checkXmlResponse(actual);
         }
 
         /// <summary>
@@ -101,7 +70,7 @@ namespace TestProject1
             target.CurrentUser = login();
             string guid = "category-grid-1"; // TODO: 初始化为适当的值
             string actual = target.deleteCategory(guid);
-            Assert.IsNotNull(actual);
+            checkXmlResponse(actual);
         }
 
         /// <summary>
@@ -114,7 +83,7 @@ namespace TestProject1
             target.CurrentUser = login();
             string actual;
             actual = target.getArticleIndexList();
-            Assert.IsNotNull(actual);
+            checkXmlResponse(actual);
         }
 
         /// <summary>
@@ -126,7 +95,7 @@ namespace TestProject1
             UserOperation target = new UserOperation(); // TODO: 初始化为适当的值
             target.CurrentUser = login();
             string actual = target.getCategoryList(target.CurrentUser.Guid);
-            Assert.IsNotNull(actual);
+            checkXmlResponse(actual);
         }
 
         /// <summary>
@@ -148,7 +117,8 @@ namespace TestProject1
     <content>当前时间:{4} </content>
 </article>            
             ", Guid.NewGuid().ToString(), target.CurrentUser.Guid, "category-guid-567", DateTime.Now, DateTime.Now));
-            Assert.IsNotNull(actual);
+
+            checkXmlResponse(actual);
         }
 
         /// <summary>
@@ -165,7 +135,21 @@ namespace TestProject1
             string name = "c#"; // TODO: 初始化为适当的值
             string actual;
             actual = target.saveCategory(guid, name);
-            Assert.IsNotNull(actual);
+
+            checkXmlResponse(actual);
+        }
+
+        /// <summary>
+        /// 检测输出结果是否合法（页面输出结果应当时一个符合定义的xml文档）
+        /// </summary>
+        /// <param name="xmlResponse"></param>
+        public void checkXmlResponse(string xmlResponse)
+        {
+            XmlDocument doc = new XmlDocument();
+            doc.LoadXml(xmlResponse);
+            string success = doc.SelectSingleNode("/Response/Success").InnerText;
+            string message = doc.SelectSingleNode("/Response/Message").InnerText;
+            Assert.IsTrue((null != success) && (null != message));
         }
     }
 }

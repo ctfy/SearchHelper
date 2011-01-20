@@ -7,8 +7,8 @@ using System.Data.Common;
 using System.Data.SqlClient;
 using System.Collections;
 using Microsoft.ApplicationBlocks.Data;
-using ITJZ.SearchHelper.API.Response;
 using System.Data;
+using System.Xml.Linq;
 
 namespace ITJZ.SearchHelper.API.Operation
 {
@@ -26,15 +26,16 @@ namespace ITJZ.SearchHelper.API.Operation
         public string getCategoryList(string uid)
         {
             needLogin();
-            ArrayList list = new ArrayList();
             SqlDataReader reader = SqlHelper.ExecuteReader(WebConfig.DatabaseConnectionString, CommandType.Text,
                 "SELECT * FROM [category] WHERE [uid]=@uid",
                 new SqlParameter("@uid", uid));
+            XElement items = new XElement ("Items");
             while (reader.Read())
             {
-                list.Add(new { Guid = reader["guid"], Name = reader["name"] });
+                items.Add(new XElement("Guid", reader["guid"]));
+                items.Add(new XElement("Name", reader["name"]));
             }
-            return object2xml(list);
+            return new SearchHelperResponse(true, "成功获取分类", items).ToString();
         }
 
         /// <summary>
@@ -51,24 +52,25 @@ namespace ITJZ.SearchHelper.API.Operation
                 "SELECT count(1) from [category] where [uid]=@uid and [guid]=@guid",
                 new SqlParameter("@uid", CurrentUser.Guid),
                 new SqlParameter("@guid", guid)) > 0;
+
+            bool success = false;
             if (isExist)
             {
-                bool success = SqlHelper.ExecuteNonQuery(WebConfig.DatabaseConnectionString, CommandType.Text,
-                    "UPDATE [category] set [name]=@name where [guid]=@guid and [uid]=@uid",
-                    new SqlParameter("@name", name),
-                    new SqlParameter("@guid", guid),
-                    new SqlParameter("@uid", CurrentUser.Guid)) > 0;
-                return new BaseResponse(success, success ? "分类名修改成功" : "分类名修改失败").ToString();
+                success = SqlHelper.ExecuteNonQuery(WebConfig.DatabaseConnectionString, CommandType.Text,
+                   "UPDATE [category] set [name]=@name where [guid]=@guid and [uid]=@uid",
+                   new SqlParameter("@name", name),
+                   new SqlParameter("@guid", guid),
+                   new SqlParameter("@uid", CurrentUser.Guid)) > 0;
             }
             else
             {
-                bool success = SqlHelper.ExecuteNonQuery(WebConfig.DatabaseConnectionString, CommandType.Text,
-                    "INSERT INTO [category]([guid],[uid],[name]) values(@guid,@uid,@name)",
-                    new SqlParameter("@guid", guid),
-                    new SqlParameter("@name", name),
-                    new SqlParameter("@uid", CurrentUser.Guid)) > 0;
-                return new BaseResponse(success, success ? "分类名修改成功" : "分类名修改失败").ToString();
+                success = SqlHelper.ExecuteNonQuery(WebConfig.DatabaseConnectionString, CommandType.Text,
+                   "INSERT INTO [category]([guid],[uid],[name]) values(@guid,@uid,@name)",
+                   new SqlParameter("@guid", guid),
+                   new SqlParameter("@name", name),
+                   new SqlParameter("@uid", CurrentUser.Guid)) > 0;
             }
+            return new SearchHelperResponse(success, success ? "分类名修改成功" : "分类名修改失败").ToString();
         }
 
         /// <summary>
@@ -82,7 +84,7 @@ namespace ITJZ.SearchHelper.API.Operation
                 "DELETE FROM [category] WHERE [uid]=@uid and [guid]=@guid",
                 new SqlParameter("@uid", CurrentUser.Guid),
                 new SqlParameter("@guid", guid)) > 0;
-            return new BaseResponse(success, success ? "删除成功" : "删除失败").ToString();
+            return new SearchHelperResponse(success, success ? "删除成功" : "删除失败").ToString();
         }
 
         #endregion
@@ -96,15 +98,15 @@ namespace ITJZ.SearchHelper.API.Operation
         public string getArticleIndexList()
         {
             needLogin();
-            ArrayList list = new ArrayList();
             SqlDataReader reader = SqlHelper.ExecuteReader(WebConfig.DatabaseConnectionString, CommandType.Text,
                 "SELECT [guid] FROM [article] WHERE [uid]=@uid",
                 new SqlParameter("@uid", CurrentUser.Guid));
+            XElement items = new XElement("Items");
             while (reader.Read())
             {
-                list.Add(new { Guid = reader["guid"] });
+                items.Add(new XElement("Guid", reader["guid"]));
             }
-            return new ArticleIndexListResponse(list).ToString();
+            return new SearchHelperResponse(true, "获取文章列表成功", items).ToString();
         }
 
         /// <summary>
@@ -121,29 +123,29 @@ namespace ITJZ.SearchHelper.API.Operation
                 "SELECT count(*) from [article] where [uid]=@uid and [guid]=@guid",
                 new SqlParameter("@uid", CurrentUser.Guid),
                 new SqlParameter("@guid", article.Guid)) > 0;
+            bool success = false;
             if (isExist)
             {
-                bool success = SqlHelper.ExecuteNonQuery(WebConfig.DatabaseConnectionString, CommandType.Text,
-                   "INSERT INTO [BinObject](guid,uid) VALUES(@guid,@uid)",
-                   new SqlParameter("@guid", article.Guid),
-                   new SqlParameter("@uid", CurrentUser.Guid)) > 0;
+                success = SqlHelper.ExecuteNonQuery(WebConfig.DatabaseConnectionString, CommandType.Text,
+                  "INSERT INTO [BinObject](guid,uid) VALUES(@guid,@uid)",
+                  new SqlParameter("@guid", article.Guid),
+                  new SqlParameter("@uid", CurrentUser.Guid)) > 0;
                 success &= saveBinObject(article.Guid, xmlText);
-                return new BaseResponse(success, success ? "分类名修改成功" : "分类名修改失败").ToString();
             }
             else
             {
-                bool success = SqlHelper.ExecuteNonQuery(WebConfig.DatabaseConnectionString, CommandType.Text,
-                     "INSERT INTO [article]([guid],[uid]) VALUES(@guid,@uid)",
-                     new SqlParameter("@guid", article.Guid),
-                     new SqlParameter("@uid", CurrentUser.Guid)) > 0;
+                success = SqlHelper.ExecuteNonQuery(WebConfig.DatabaseConnectionString, CommandType.Text,
+                    "INSERT INTO [article]([guid],[uid]) VALUES(@guid,@uid)",
+                    new SqlParameter("@guid", article.Guid),
+                    new SqlParameter("@uid", CurrentUser.Guid)) > 0;
                 success &= SqlHelper.ExecuteNonQuery(WebConfig.DatabaseConnectionString, CommandType.Text,
                    "INSERT INTO [BinObject]([guid],[uid]) VALUES(@guid,@uid)",
                    new SqlParameter("@guid", article.Guid),
                    new SqlParameter("@uid", CurrentUser.Guid)) > 0;
                 success &= saveBinObject(article.Guid, xmlText);
-                return new BaseResponse(success, success ? "保存成功" : "保存失败").ToString();
             }
-            throw new BaseException();
+            string message = string.Format("{0}文章{1}", isExist ? "修改" : "添加", success ? "成功" : "失败");
+            return new SearchHelperResponse(success, message).ToString();
         }
 
         /// <summary>
@@ -157,7 +159,7 @@ namespace ITJZ.SearchHelper.API.Operation
                 "DELETE FROM [article] WHERE [uid]=@uid and guid=@guid",
                 new SqlParameter("@uid", CurrentUser.Guid),
                 new SqlParameter("@guid", guid)) > 0;
-            return new BaseResponse(success, success ? "删除成功" : "删除失败").ToString();
+            return new SearchHelperResponse(success, success ? "删除成功" : "删除失败").ToString();
         }
 
         #endregion

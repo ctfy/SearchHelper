@@ -8,6 +8,7 @@ using System.IO;
 using System.Collections;
 using System.Reflection;
 using System.Xml;
+using System.Xml.Linq;
 
 namespace ITJZ.SearchHelper.API.Operation
 {
@@ -22,25 +23,6 @@ namespace ITJZ.SearchHelper.API.Operation
         public ITJZ.SearchHelper.API.Entity.User CurrentUser { get; set; }
 
         public SqlConnection DatabaseConnection { get; private set; }
-
-        public string object2xml(object obj)
-        {
-            XmlDocument doc = new XmlDocument();
-            doc.LoadXml("");
-            string fullName = obj.GetType().FullName;
-            if (fullName == "System.Collections.ArrayList")
-            {
-                foreach (var item in (ArrayList)obj)
-                {
-                    Type t = Type.GetType(item.GetType().FullName);
-                    foreach (PropertyInfo pi in t.GetProperties())
-                    {
-                    }
-
-                }
-            }
-            return null;
-        }
 
         public void needLogin()
         {
@@ -72,6 +54,64 @@ namespace ITJZ.SearchHelper.API.Operation
         public bool saveBinObject(string guid, byte[] b)
         {
             throw new System.Exception();
+        }
+
+
+        /// <summary>
+        /// 创建一个页面输出结果
+        /// </summary>
+        public class SearchHelperResponse
+        {
+            private XDocument mXDocument;
+            private XElement mXRoot;
+
+            /// <summary>
+            /// 一个页面输出结果类型的构造函数
+            /// </summary>
+            /// <param name="success">是否执行成功</param>
+            /// <param name="message">执行结果提示的消息</param>
+            public SearchHelperResponse(bool success, string message,params XElement[] toAddElements)
+            {
+                //初始化一个xdocument对象，并设置xml头部
+                mXDocument = new XDocument(
+                    new XDeclaration("1.0", "utf-8", "no"));
+
+                //创建根元素并添加到xml文档
+                mXRoot = new XElement("Response");
+                mXDocument.Add(mXRoot);
+
+                //添加必须参数
+                mXRoot.Add(new XElement("Success", success));
+                mXRoot.Add(new XElement("Message", message));
+
+                //添加主体输出内容
+                foreach (var item in toAddElements)
+                {
+                    mXRoot.Add(item);
+                }
+            }
+
+            /// <summary>
+            /// 向输出结果添加主体
+            /// </summary>
+            /// <param name="xelement">一个xElement元素</param>
+            public void AddXElement(XElement xelement)
+            {
+                mXRoot.Add(xelement);
+            }
+
+            /// <summary>
+            /// 输出格式化后的xml字符串
+            /// </summary>
+            /// <returns></returns>
+            public override string ToString()
+            {
+                StringBuilder sb = new StringBuilder();
+                XmlWriter xmlWriter = XmlWriter.Create(sb);
+                mXDocument.WriteTo(xmlWriter);
+                xmlWriter.Flush();
+                return sb.ToString();
+            }
         }
     }
 }
