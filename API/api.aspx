@@ -1,0 +1,1 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="api.aspx.cs" Inherits="ITJZ.SearchHelper.API.WebForm1" %>
