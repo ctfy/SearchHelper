@@ -55,8 +55,10 @@ namespace ITJZ.SearchHelper.API_DLL.Operation
             XElement items = new XElement ("Items");
             while (reader.Read())
             {
-                items.Add(new XElement("Guid", reader["guid"]));
-                items.Add(new XElement("Name", reader["name"]));
+                items.Add(
+                    new XElement("Item",
+                        new XElement("Guid", reader["guid"])),
+                        new XElement("Name", reader["name"]));
             }
             return new SearchHelperResponse(true, "成功获取分类", items).ToString();
         }
