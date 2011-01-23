@@ -15,5 +15,7 @@ namespace ITJZ.SearchHelper.Client
                 return mBaseApiUrl;
             }
         }
+
+        public static string DatabaseString { get; set; }
     }
 }

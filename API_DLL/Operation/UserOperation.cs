@@ -164,16 +164,19 @@ namespace ITJZ.SearchHelper.API_DLL.Operation
         /// 获取文章索引列表
         /// </summary>
         /// <param name="user"></param>
-        public string getArticleIndexList()
+        public string getArticleIndexList(params string[] uids)
         {
+            string fromUid = uids.Length > 0 ? uids[0] : CurrentUser.Guid;
+
             needLogin();
             SqlDataReader reader = SqlHelper.ExecuteReader(WebConfig.DatabaseConnectionString, CommandType.Text,
                 "SELECT [guid] FROM [article] WHERE [uid]=@uid",
-                new SqlParameter("@uid", CurrentUser.Guid));
+                new SqlParameter("@uid", fromUid);
             XElement items = new XElement("Items");
             while (reader.Read())
             {
                 items.Add(new XElement("Guid", reader["guid"]));
+                items.Add(new XElement("Uid", fromUid));
             }
             return new SearchHelperResponse(true, "获取文章列表成功", items).ToString();
         }

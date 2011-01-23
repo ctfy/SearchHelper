@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using ITJZ.SearchHelper.API_DLL.Exception;
+using System.IO;
 
 namespace ITJZ.SearchHelper.API_DLL.Operation
 {
@@ -18,7 +19,7 @@ namespace ITJZ.SearchHelper.API_DLL.Operation
         /// <returns></returns>
         public byte[] getBinOjbect(string md5)
         {
-            throw new BaseException();
+            return File.ReadAllBytes(WebConfig.BinObjectSavePath + "/" + md5);
         }
     }
 }
