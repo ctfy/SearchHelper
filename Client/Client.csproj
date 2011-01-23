@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppConfig.cs" />
     <Compile Include="FrmCategoryDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -68,6 +69,7 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Model\BinarySerialize.cs" />
     <Compile Include="Model\Category.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="Program.cs" />
@@ -90,6 +92,7 @@
     <Compile Include="ucMenu.Designer.cs">
       <DependentUpon>ucMenu.cs</DependentUpon>
     </Compile>
+    <Compile Include="Util\Tools.cs" />
     <EmbeddedResource Include="FrmCategoryDialog.resx">
       <DependentUpon>FrmCategoryDialog.cs</DependentUpon>
     </EmbeddedResource>

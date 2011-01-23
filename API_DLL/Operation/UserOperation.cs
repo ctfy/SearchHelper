@@ -18,15 +18,59 @@ namespace ITJZ.SearchHelper.API_DLL.Operation
     public class UserOperation : BaseOperation
     {
         #region 用户权限和验证相关操作
-        //public string register(string email, string password, string nickname)
-        //{
+        public string register(string email, string password, string nickname)
+        {
+            try
+            {
+                string sql = "INSERT INTO [User] set [guid]=@guid, [email]=@email, [password]=@password, [nickname]=@nickname";
+                bool success = 1 == SqlHelper.ExecuteNonQuery(WebConfig.DatabaseConnectionString, CommandType.Text, sql,
+                    new SqlParameter("@guid", Guid.NewGuid().ToString()),
+                     new SqlParameter("@email", email),
+                    new SqlParameter("@password", password),
+                    new SqlParameter("@nickname", nickname));
+                return new SearchHelperResponse(success, "注册" + (success ? "成功" : "失败")).ToString();
+            }
+            catch
+            {
+                return new SearchHelperResponse(false, "因发生异常注册失败").ToString();
+            }
+        }
 
-        //}
+        public string login(string email, string password)
+        {
+            string sql = "SELECT * FROM [user] WHERE [email]=@email and [password]=@password";
+            var reader = SqlHelper.ExecuteReader(WebConfig.DatabaseConnectionString,CommandType.Text,sql,
+                new SqlParameter("@email", email),
+                new SqlParameter("@password", password));
+            if (reader.Read())
+            {
+                //设置当前登陆用户
+                CurrentUser = new Entity.User()
+                {
+                    ID = (int)reader["ID"],
+                    Guid = reader["Guid"].ToString(),
+                    Nickname = reader["Nickname"].ToString(),
+                    Email = reader["Email"].ToString(),
+                    Password = reader["Password"].ToString(),
+                    CreateTime = (DateTime)reader["CreateTime"]
+                };
 
-        //public string login(string email, string password)
-        //{
-
-        //}
+                //返回的内容
+                XElement xUser = new XElement("User");
+                xUser.Add(new XElement("ID", reader["ID"]));
+                xUser.Add(new XElement("Guid", reader["Guid"]));
+                xUser.Add(new XElement("CreateTime", reader["CreateTime"]));
+                xUser.Add(new XElement("Email", reader["email"]));
+                xUser.Add(new XElement("Nickname", reader["Nickname"]));
+                xUser.Add(new XElement("Password", reader["Password"]));
+                xUser.Add(new XElement("SessionKey", System.Web.HttpContext.Current.Session.SessionID));
+                return new SearchHelperResponse(true, "登陆成功", xUser).ToString();
+            }
+            else
+            {
+                return new SearchHelperResponse(false, "登陆失败").ToString();
+            }
+        }
 
         //public string login(string sessionKey)
         //{

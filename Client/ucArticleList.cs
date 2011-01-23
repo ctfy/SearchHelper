@@ -31,9 +31,12 @@ namespace ITJZ.SearchHelper.Client
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             int selectedIndex = ((ListBox)sender).SelectedIndex;
-            ITJZ.SearchHelper.Client.Model.Article selectedArticle = CurrentArticles[selectedIndex];
-            ArticleEventArgs args = new ArticleEventArgs() { SelectedArticle = selectedArticle };
-            SelectArticleChanged(this, args);
+            if (selectedIndex > -1)
+            {
+                ITJZ.SearchHelper.Client.Model.Article selectedArticle = CurrentArticles[selectedIndex];
+                ArticleEventArgs args = new ArticleEventArgs() { SelectedArticle = selectedArticle };
+                SelectArticleChanged(this, args);
+            }
         }
 
         private void ucArticleList_Load(object sender, EventArgs e)

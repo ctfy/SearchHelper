@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace ITJZ.SearchHelper.Client.Model
 {
+    [Serializable]
     public class User
     {
         public string Guid { get; set; }
@@ -14,13 +17,41 @@ namespace ITJZ.SearchHelper.Client.Model
         public string Password { get; set; }
         public DateTime CreateTime { get; set; }
 
-        public bool login(TextBox tbEmail, TextBox tbPassword)
+        public static bool login(TextBox tbEmail, TextBox tbPassword)
         {
             string email = tbEmail.Text;
             string password = tbPassword.Text;
+            string url = string.Format("{0}?method=login&email={1}&password={2}", AppConfig.BaseApiUrl, email, password);
+            string result = Client.Util.Tools.DownloadString(url);
+            var doc = Client.Util.Tools.buildXDoc(result);
 
-            mUser = new User();
-            return true;
+            bool success = bool.Parse(doc.SelectSingleNode("//Success").InnerText);
+            if (success)
+            {
+                mUser = new User()
+                {
+                    Guid = doc.SelectSingleNode("//User/ID").InnerText,
+                    Nickname = doc.SelectSingleNode("//User/Nickname").InnerText,
+                    Password = doc.SelectSingleNode("//User/Password").InnerText,
+                    CreateTime = DateTime.Parse(doc.SelectSingleNode("//User/CreateTime").InnerText),
+                    Email = doc.SelectSingleNode("//User/Email").InnerText
+                };
+                try
+                {
+                    using (FileStream fs = File.Open("User.bin", FileMode.Create))
+                    {
+                        BinaryFormatter bin = new BinaryFormatter();
+                        bin.Serialize(fs, mUser);
+                    }
+                }
+                catch { }
+                return true;
+            }
+            else
+            {
+                MessageBox.Show(doc.SelectSingleNode("//Message").InnerText);
+                return false;
+            }
         }
 
         private static User mUser;
@@ -42,7 +73,24 @@ namespace ITJZ.SearchHelper.Client.Model
         /// <returns>当前登陆用户</returns>
         public static User getCurrentUser(bool needLogin)
         {
-            if (needLogin)
+            if (null == mUser && File.Exists("User.bin"))
+            {
+                try
+                {
+                    using (FileStream fs = File.Open("User.bin", FileMode.Open))
+                    {
+                        BinaryFormatter bin = new BinaryFormatter();
+                        mUser = (User)bin.Deserialize(fs);
+                    }
+                }
+                catch (Exception)
+                {
+                    mUser = null;
+                    File.Delete("User.bin");
+                }
+            }
+
+            if (needLogin && null == mUser)
             {
                 showLoginForm();
             }
@@ -54,7 +102,7 @@ namespace ITJZ.SearchHelper.Client.Model
         /// </summary>
         public static void showLoginForm()
         {
-            FrmLogin frm = new FrmLogin();
+            FrmLogin frm = FrmLogin.getInstance();
             frm.ShowDialog();
         }
     }

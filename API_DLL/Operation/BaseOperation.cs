@@ -17,10 +17,22 @@ namespace ITJZ.SearchHelper.API_DLL.Operation
     /// </summary>
     public class BaseOperation
     {
+        public static ITJZ.SearchHelper.API_DLL.Entity.User mCurrentUser;
+
         /// <summary>
         /// 当前正在操作的用户
         /// </summary>
-        public static ITJZ.SearchHelper.API_DLL.Entity.User CurrentUser { get; set; }
+        public static ITJZ.SearchHelper.API_DLL.Entity.User CurrentUser
+        {
+            get
+            {
+                return mCurrentUser;
+            }
+            set
+            {
+                mCurrentUser = value;
+            }
+        }
 
         /// <summary>
         /// 数据库的连接
