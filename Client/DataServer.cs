@@ -5,6 +5,7 @@ using System.Text;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Xml;
+using Microsoft.ApplicationBlocks.Data;
 using System.Data;
 using System.Data.SqlClient;
 
@@ -12,19 +13,6 @@ namespace ITJZ.SearchHelper.Client.DataServer
 {
     public class DataServer
     {
-        private static DataServer _DataServer;
-        private DataServer()
-        {
-        }
-        public static DataServer getInstance()
-        {
-            if (null==_DataServer)
-            {
-                _DataServer = new DataServer();
-            }
-            return _DataServer;
-        }
-
         /// <summary>
         /// 获取分类
         /// </summary>
@@ -35,7 +23,7 @@ namespace ITJZ.SearchHelper.Client.DataServer
         {
             List<Model.Category> forReturnList = new List<Model.Category>();
             string binName = "Category.bin";
-            if (File.Exists(binName) && !needUpdate)
+            if (File.Exists(binName) || needUpdate)
             {
                 using (FileStream fs = File.Open(binName, FileMode.Open))
                 {
@@ -58,9 +46,9 @@ namespace ITJZ.SearchHelper.Client.DataServer
                     foreach (XmlNode item in nodeList)
                     {
                         Model.Category tempCategory = new Model.Category();
-                        tempCategory.Guid = item["Guid"].InnerText;
-                        tempCategory.Name = item["Name"].InnerText;
-                        tempCategory.Uid = item["Uid"].InnerText;
+                        tempCategory.Guid = item.SelectSingleNode("//Guid").InnerText;
+                        tempCategory.Name = item.SelectSingleNode("//Name").InnerText;
+                        tempCategory.Uid = item.SelectSingleNode("//Uid").InnerText;
                         forReturnList.Add(tempCategory);
                     }
                     using (FileStream fs = File.Open(binName, FileMode.Create))
@@ -79,7 +67,7 @@ namespace ITJZ.SearchHelper.Client.DataServer
         }
     }
 
-    class ClientAndServer
+    private class ClientAndServer
     {
         public void updateCategory()
         {

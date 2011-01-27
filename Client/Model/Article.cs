@@ -5,6 +5,7 @@ using System.Text;
 
 namespace ITJZ.SearchHelper.Client.Model
 {
+    [Serializable]
     public class Article
     {
         public string Guid { get; set; }

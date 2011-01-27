@@ -21,13 +21,7 @@ namespace ITJZ.SearchHelper.Client
         private ITJZ.SearchHelper.Client.Model.Category[] mCategories;
         private void ucMenu_Load(object sender, EventArgs e)
         {
-            mCategories = ITJZ.SearchHelper.Client.Model.Category.getMenu().ToArray();
-            listBox1.Items.AddRange(mCategories);
-            if (mCategories.Length>0)
-            {
-                SelectedCategory = mCategories[0];
-                listBox1.SelectedIndex = 0;
-            }
+            updateItems(false);
         }
 
         public Category SelectedCategory { get; set; }
@@ -37,13 +31,15 @@ namespace ITJZ.SearchHelper.Client
         {
             int selectIndex = ((ListBox)sender).SelectedIndex;
             SelectedCategory = mCategories[selectIndex];
-            SelectedCategoryChanged(this, 
-                new CategoryEventArgs()
-                { 
-                    SelectedCategory = this.SelectedCategory 
-                }
-                );
-            
+            if (null != SelectedCategoryChanged)
+            {
+                SelectedCategoryChanged(this,
+                    new CategoryEventArgs()
+                    {
+                        SelectedCategory = this.SelectedCategory
+                    }
+                    );
+            }
         }
 
         public event EventHandler<CategoryEventArgs> SelectedCategoryChanged;
@@ -58,7 +54,8 @@ namespace ITJZ.SearchHelper.Client
             if (DialogResult.OK == frm.ShowDialog())
             {
                 string name = frm.textBox1.Text.Trim();
-                if (name.Length<1 || name.Length>10){
+                if (name.Length < 1 || name.Length > 10)
+                {
                     MessageBox.Show("分类名应1-10个字符的字符串");
                     return;
                 }
@@ -75,7 +72,7 @@ namespace ITJZ.SearchHelper.Client
 
         private void 修改ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string name = SelectedCategory.Name; 
+            string name = SelectedCategory.Name;
             FrmCategoryDialog frm = new FrmCategoryDialog();
             frm.Name = name;
             if (DialogResult.OK == frm.ShowDialog())
@@ -94,6 +91,29 @@ namespace ITJZ.SearchHelper.Client
         private void 删除ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Model.Category.delete(SelectedCategory);
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            updateItems(true);
+        }
+
+        private void updateItems(bool needUpdate)
+        {
+            try
+            {
+                mCategories = ITJZ.SearchHelper.Client.Model.Category.getMenu(needUpdate).ToArray();
+                listBox1.Items.Clear();
+                listBox1.Items.AddRange(mCategories);
+                if (mCategories.Length > 0)
+                {
+                    SelectedCategory = mCategories[0];
+                    listBox1.SelectedIndex = 0;
+                }
+            }
+            catch 
+            {
+            }
         }
     }
 }

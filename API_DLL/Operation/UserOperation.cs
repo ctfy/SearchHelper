@@ -101,8 +101,9 @@ namespace ITJZ.SearchHelper.API_DLL.Operation
             {
                 items.Add(
                     new XElement("Item",
-                        new XElement("Guid", reader["guid"])),
-                        new XElement("Name", reader["name"]));
+                        new XElement("Guid", reader["guid"]),
+                        new XElement("Name", reader["name"]),
+                        new XElement("Uid", reader["Uid"])));
             }
             return new SearchHelperResponse(true, "成功获取分类", items).ToString();
         }
@@ -171,7 +172,7 @@ namespace ITJZ.SearchHelper.API_DLL.Operation
             needLogin();
             SqlDataReader reader = SqlHelper.ExecuteReader(WebConfig.DatabaseConnectionString, CommandType.Text,
                 "SELECT [guid] FROM [article] WHERE [uid]=@uid",
-                new SqlParameter("@uid", fromUid);
+                new SqlParameter("@uid", fromUid));
             XElement items = new XElement("Items");
             while (reader.Read())
             {
