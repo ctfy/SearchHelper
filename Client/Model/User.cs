@@ -30,7 +30,7 @@ namespace ITJZ.SearchHelper.Client.Model
             {
                 mUser = new User()
                 {
-                    Guid = doc.SelectSingleNode("//User/ID").InnerText,
+                    Guid = doc.SelectSingleNode("//User/Guid").InnerText,
                     Nickname = doc.SelectSingleNode("//User/Nickname").InnerText,
                     Password = doc.SelectSingleNode("//User/Password").InnerText,
                     CreateTime = DateTime.Parse(doc.SelectSingleNode("//User/CreateTime").InnerText),
