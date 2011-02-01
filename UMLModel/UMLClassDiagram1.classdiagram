@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm10="http://schemas.microsoft.com/dsltools/UseCaseModel" dslVersion="1.0.0.0" Id="c90e42dd-518c-4a8d-b350-772d006c1e7a" name="UMLClassDiagram1" linkedPackageId="fd946c93-0cf6-473a-b934-7ea0ae2f37a8" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
+  <profileInstances>
+    <packageHasProfileInstances Id="083da2c8-5b5a-4382-a176-6ba963b1cfd9">
+      <profileInstance Id="45f99a0b-0fda-46b3-b55e-47539d9c3f97" name="StandardProfileL2">
+        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+      </profileInstance>
+      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="1c7b2486-c72b-400d-8449-c68351331789">
+      <profileInstance Id="344cfabb-0660-4714-ae3c-1b44798b0974" name="StandardProfileL3">
+        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+      </profileInstance>
+      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <logicalClassDesignerModelHasPackages>
+      <package Id="f5c65318-24ff-40c5-8bc5-edeb22b55580" name="客户端同步服务">
+        <elementDefinition Id="cd7fd61d-b073-454e-9809-3cc49821d0f0" />
+        <packagedElements>
+          <packageHasNamedElement>
+            <class Id="4a5497b3-c281-4689-9423-536af4ffe004" name="服务管理工厂类" isAbstract="false" isLeaf="false" isActiveClass="false">
+              <elementDefinition Id="22443ea1-c543-42c5-94c6-c69a1987ba5c" />
+              <targetEnds>
+                <association Id="ab6d226f-3cd0-4df1-b8dd-0318fe5a3603" isDerived="false" sourceEndRoleName="服务管理工厂类" targetEndRoleName="分类管理工厂" isLeaf="false" isAbstract="false">
+                  <classMoniker Id="1172caf8-f2ac-45bf-886b-8ac71cb6b29d" LastKnownName="分类管理工厂" />
+                  <relationshipOwnedElementsInternal>
+                    <associationHasOwnedEnds>
+                      <memberEnd Id="70b1c435-200f-4a9c-8170-19db10d90783" name="服务管理工厂类" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                        <elementDefinition Id="83a636a3-e747-4aa4-b41a-0ce275251dfd" />
+                      </memberEnd>
+                    </associationHasOwnedEnds>
+                    <associationHasOwnedEnds>
+                      <memberEnd Id="72e1699f-383c-4f47-a70c-ef50a2d9ab69" name="分类管理工厂" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                        <elementDefinition Id="152c6c04-f539-41c3-9c08-e1491a75eab2" />
+                      </memberEnd>
+                    </associationHasOwnedEnds>
+                  </relationshipOwnedElementsInternal>
+                  <elementDefinition Id="3cac0bd2-c5ca-4faa-a7bc-eb1838d6b6b6" />
+                </association>
+                <association Id="0f466ef1-acac-464a-8512-05eba263545f" isDerived="false" sourceEndRoleName="服务管理工厂类" targetEndRoleName="文章管理工厂" isLeaf="false" isAbstract="false">
+                  <classMoniker Id="d2763b37-82a0-41fd-b7e1-663863271ea6" LastKnownName="文章管理工厂" />
+                  <relationshipOwnedElementsInternal>
+                    <associationHasOwnedEnds>
+                      <memberEnd Id="10d5ca89-62c3-46c9-8447-e6640178aba1" name="服务管理工厂类" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                        <elementDefinition Id="ba5ae3b8-fdea-4795-bc10-45d590ddbacb" />
+                      </memberEnd>
+                    </associationHasOwnedEnds>
+                    <associationHasOwnedEnds>
+                      <memberEnd Id="422bd235-9bd0-4eb6-95f2-e263aef92989" name="文章管理工厂" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                        <elementDefinition Id="3724e2bd-a1d8-44d8-a911-444a13eeb5f0" />
+                      </memberEnd>
+                    </associationHasOwnedEnds>
+                  </relationshipOwnedElementsInternal>
+                  <elementDefinition Id="01489d17-0978-4907-9fa4-c77276a4bf68" />
+                </association>
+                <association Id="6ea5d6e8-bbd5-4f22-8982-5438b93edf18" isDerived="false" sourceEndRoleName="服务管理工厂类" targetEndRoleName="Interface1" isLeaf="false" isAbstract="false">
+                  <interfaceMoniker Id="90d13126-6b1e-49bb-a831-cac9bb926aee" LastKnownName="数据库" />
+                  <relationshipOwnedElementsInternal>
+                    <associationHasOwnedEnds>
+                      <memberEnd Id="a27fe99a-ce7e-41c7-99d6-1e178fa709ef" name="服务管理工厂类" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                        <elementDefinition Id="21c775b5-0957-4584-8708-881e5fefd2c2" />
+                      </memberEnd>
+                    </associationHasOwnedEnds>
+                    <associationHasOwnedEnds>
+                      <memberEnd Id="7989dba8-154f-4d7d-82cd-af73b4d0d28a" name="Interface1" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                        <elementDefinition Id="a8cee3e1-2bd2-4f1a-af40-04bc0770b573" />
+                      </memberEnd>
+                    </associationHasOwnedEnds>
+                  </relationshipOwnedElementsInternal>
+                  <elementDefinition Id="da17e5ab-0e45-4752-8bc2-1387208c4130" />
+                </association>
+              </targetEnds>
+              <ownedOperationsInternal>
+                <operation Id="02ee1aa0-9b63-4108-8942-a87149a2ee7b" name="获取一个服务类" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+                  <elementDefinition Id="b0a9ef21-8c35-4acb-8fc9-0cdc3e777b3a" />
+                </operation>
+              </ownedOperationsInternal>
+            </class>
+          </packageHasNamedElement>
+          <packageHasNamedElement>
+            <class Id="1172caf8-f2ac-45bf-886b-8ac71cb6b29d" name="分类管理工厂" isAbstract="false" isLeaf="false" isActiveClass="false">
+              <elementDefinition Id="bfcc96cf-3d0d-4e66-baf3-340c9323e4a5" />
+              <ownedOperationsInternal>
+                <operation Id="61e0cbec-0923-4695-bee1-58132ba1b10e" name="获取分类" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+                  <elementDefinition Id="d12475d6-ffb3-4406-b736-7c859ffb1f44" />
+                </operation>
+                <operation Id="b1f22844-30d4-4587-ab21-e16af0de3a47" name="保存分类" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+                  <elementDefinition Id="b6028bb6-94a8-461e-919f-e3fbaa741a8b" />
+                </operation>
+              </ownedOperationsInternal>
+            </class>
+          </packageHasNamedElement>
+          <packageHasNamedElement>
+            <class Id="d2763b37-82a0-41fd-b7e1-663863271ea6" name="文章管理工厂" isAbstract="false" isLeaf="false" isActiveClass="false">
+              <elementDefinition Id="4fd452b4-eac3-43d4-a7c3-b83468c4ae5d" />
+            </class>
+          </packageHasNamedElement>
+          <packageHasNamedElement>
+            <Interface Id="90d13126-6b1e-49bb-a831-cac9bb926aee" name="数据库" isAbstract="false" isLeaf="false">
+              <elementDefinition Id="7c452acd-271c-416b-b8f9-114744dafcf5" />
+            </Interface>
+          </packageHasNamedElement>
+        </packagedElements>
+      </package>
+    </logicalClassDesignerModelHasPackages>
+    <packageHasNamedElement>
+      <class Id="f2a5ddfa-90c0-486c-9a80-4823fba08bc2" name="同步者" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="336117f2-2ce3-4cec-b2ec-9f64fb635cb5" />
+        <targetEnds>
+          <association Id="7c12815e-0880-452d-a246-7c8d4b6b0283" isDerived="false" sourceEndRoleName="同步者" targetEndRoleName="Interface1" isLeaf="false" isAbstract="false">
+            <interfaceMoniker Id="90d13126-6b1e-49bb-a831-cac9bb926aee" LastKnownName="数据库" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="8663b6df-c34d-4b76-8e6a-ffbc05469fdc" name="同步者" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="6bec3a31-9a72-491b-af10-eb045b427905" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="9fbdada7-a54a-4110-9ac2-95ebc0f34b84" name="Interface1" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="8b1164fb-c247-44f1-85f3-0da5b79e1b45" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="fa495d04-c4f0-422c-abd4-bb1f97778b17" />
+          </association>
+        </targetEnds>
+      </class>
+    </packageHasNamedElement>
+  </packagedElements>
+  <package Id="fd946c93-0cf6-473a-b934-7ea0ae2f37a8" name="UMLModel">
+    <elementDefinition Id="05edbe67-87d1-40bd-8278-1294dbd7b100" />
+  </package>
+</logicalClassDesignerModel>

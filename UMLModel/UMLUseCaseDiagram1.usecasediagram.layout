@@ -1,0 +1,175 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<useCaseDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="UMLUseCaseDiagram1">
+  <useCaseModelRootMoniker Id="e4d8f22f-4a0e-4cd1-adc2-c23f298f6e0e" />
+  <nestedChildShapes>
+    <actorShape Id="27f319e9-0469-4887-be16-4393d1f5b3a4" absoluteBounds="0.5, 3.375, 0.5, 0.5" isReference="false" heightOffset="0">
+      <actorMoniker Id="80ede889-3478-4d18-ba9b-04aae8ef25a5" LastKnownName="用户" />
+      <relativeChildShapes />
+    </actorShape>
+    <useCaseShape Id="6ea53f5e-338a-4865-a838-b512aadfd21f" absoluteBounds="3.25, 1.5, 1, 0.5" customColor="238, 237, 131" heightOffset="0">
+      <useCaseMoniker Id="09b39a08-d8fe-4d52-ba09-a21ad7f53b16" LastKnownName="管理分类" />
+      <relativeChildShapes />
+    </useCaseShape>
+    <useCaseAssociationConnector edgePoints="[(1 : 3.46875); (3.43765247622279 : 1.94521720236076)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="113, 111, 110" sourceMultiplicity="" targetMultiplicity="">
+      <associationMoniker Id="ae13303e-0e51-426c-a0a1-3bab53db468e" />
+      <relativeChildShapes />
+      <nodes>
+        <actorShapeMoniker Id="27f319e9-0469-4887-be16-4393d1f5b3a4" />
+        <useCaseShapeMoniker Id="6ea53f5e-338a-4865-a838-b512aadfd21f" />
+      </nodes>
+    </useCaseAssociationConnector>
+    <useCaseShape Id="a0e15e75-acbf-4666-9901-06783c9bf534" absoluteBounds="4, 5.375, 1, 0.5" customColor="238, 237, 131" heightOffset="0">
+      <useCaseMoniker Id="7d01e021-6ee4-41f5-bfbb-cc5a0705c8a9" LastKnownName="管理文章" />
+      <relativeChildShapes />
+    </useCaseShape>
+    <useCaseAssociationConnector edgePoints="[(1 : 3.75833333333333); (4.15802943555934 : 5.44261569896498)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="113, 111, 110" sourceMultiplicity="" targetMultiplicity="">
+      <associationMoniker Id="f66d4a74-0fea-4e98-b45a-0423101dd903" />
+      <relativeChildShapes />
+      <nodes>
+        <actorShapeMoniker Id="27f319e9-0469-4887-be16-4393d1f5b3a4" />
+        <useCaseShapeMoniker Id="a0e15e75-acbf-4666-9901-06783c9bf534" />
+      </nodes>
+    </useCaseAssociationConnector>
+    <useCaseShape Id="6911351c-6b2e-4846-bc96-d8f1e062fe6e" absoluteBounds="4.625, 0.75, 1, 0.5" customColor="238, 237, 131" heightOffset="0">
+      <useCaseMoniker Id="053086ae-0f1d-4eb3-9788-6c2ee81b01bc" LastKnownName="添加分类" />
+      <relativeChildShapes />
+    </useCaseShape>
+    <includeConnector edgePoints="[(4.08786231425867 : 1.56571146494981); (4.78713768574133 : 1.18428853505019)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="Black" useCaseStereotype="«包括»">
+      <includeMoniker Id="c9f0596a-cc45-49a6-aa90-1a2cf10ba3e7" />
+      <relativeChildShapes />
+      <nodes>
+        <useCaseShapeMoniker Id="6ea53f5e-338a-4865-a838-b512aadfd21f" />
+        <useCaseShapeMoniker Id="6911351c-6b2e-4846-bc96-d8f1e062fe6e" />
+      </nodes>
+    </includeConnector>
+    <useCaseShape Id="78998c65-a673-49db-a896-ee95959cef92" absoluteBounds="1.25, 0.75, 1, 0.5" customColor="238, 237, 131" heightOffset="0">
+      <useCaseMoniker Id="3d700507-a7a4-4af6-a2e3-63c66da9926c" LastKnownName="浏览分类" />
+      <relativeChildShapes />
+    </useCaseShape>
+    <includeConnector edgePoints="[(3.35 : 1.6); (2.15 : 1.15)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="Black" useCaseStereotype="«包括»">
+      <includeMoniker Id="b80e68b3-6a55-44b7-aaa7-9bef3e128dc5" />
+      <relativeChildShapes />
+      <moveableDecoratorHostShapes>
+        <moveableDecoratorHostShape manuallyPlaced="true" absoluteBounds="2.4536048813426268, 1.1106395585889946, 0.26500000000000012, 0.16666666666666666" shapeFieldName="NameDecorator" />
+      </moveableDecoratorHostShapes>
+      <nodes>
+        <useCaseShapeMoniker Id="6ea53f5e-338a-4865-a838-b512aadfd21f" />
+        <useCaseShapeMoniker Id="78998c65-a673-49db-a896-ee95959cef92" />
+      </nodes>
+    </includeConnector>
+    <useCaseShape Id="ffbe5997-71df-4dea-a9bb-a965f9e746b2" absoluteBounds="0.5, 1.625, 1, 0.5" customColor="238, 237, 131" heightOffset="0">
+      <useCaseMoniker Id="91a21431-5ce2-49f7-9986-b1945bfc26df" LastKnownName="修改分类" />
+      <relativeChildShapes />
+    </useCaseShape>
+    <includeConnector edgePoints="[(3.25205339676615 : 1.77263393651063); (1.49794660323385 : 1.85236606348937)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="Black" useCaseStereotype="«包括»">
+      <includeMoniker Id="18227d90-4b8a-4a62-ac5d-f4352ceb3de4" />
+      <relativeChildShapes />
+      <moveableDecoratorHostShapes>
+        <moveableDecoratorHostShape manuallyPlaced="true" absoluteBounds="2.0000000000000004, 1.6249999999999991, 0.52083333333333337, 0.16666666666666666" shapeFieldName="NameDecorator" />
+      </moveableDecoratorHostShapes>
+      <nodes>
+        <useCaseShapeMoniker Id="6ea53f5e-338a-4865-a838-b512aadfd21f" />
+        <useCaseShapeMoniker Id="ffbe5997-71df-4dea-a9bb-a965f9e746b2" />
+      </nodes>
+    </includeConnector>
+    <useCaseShape Id="c05149c6-683e-4781-9b8e-4dd3698cfd48" absoluteBounds="5.25, 1.5, 1, 0.5" customColor="238, 237, 131" heightOffset="0">
+      <useCaseMoniker Id="fbc8a29d-9911-43cc-9699-98d86ff7ae5e" LastKnownName="删除分类" />
+      <relativeChildShapes />
+    </useCaseShape>
+    <includeConnector edgePoints="[(4.25 : 1.75); (5.25 : 1.75)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="Black" useCaseStereotype="«包括»">
+      <includeMoniker Id="20ef1f51-8404-4876-ac31-91cd194db197" />
+      <relativeChildShapes />
+      <moveableDecoratorHostShapes>
+        <moveableDecoratorHostShape manuallyPlaced="true" absoluteBounds="4.6232324464377923, 1.5620825671700362, 0.52083333333333337, 0.16666666666666666" shapeFieldName="NameDecorator" />
+      </moveableDecoratorHostShapes>
+      <nodes>
+        <useCaseShapeMoniker Id="6ea53f5e-338a-4865-a838-b512aadfd21f" />
+        <useCaseShapeMoniker Id="c05149c6-683e-4781-9b8e-4dd3698cfd48" />
+      </nodes>
+    </includeConnector>
+    <useCaseShape Id="874eb86b-ba52-4cc7-9d8f-e672312877ad" absoluteBounds="5.375, 7.625, 1, 0.5" customColor="238, 237, 131" heightOffset="0">
+      <useCaseMoniker Id="692cb42f-24e9-445c-b279-ce77e0206aa3" LastKnownName="浏览某篇文章" />
+      <relativeChildShapes />
+    </useCaseShape>
+    <includeConnector edgePoints="[(4.64610926779951 : 5.86408789276283); (5.72889073220049 : 7.63591210723717)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="Black" useCaseStereotype="«包括»">
+      <includeMoniker Id="25be4200-e3f1-4f65-bf99-8957a4b39199" />
+      <relativeChildShapes />
+      <nodes>
+        <useCaseShapeMoniker Id="a0e15e75-acbf-4666-9901-06783c9bf534" />
+        <useCaseShapeMoniker Id="874eb86b-ba52-4cc7-9d8f-e672312877ad" />
+      </nodes>
+    </includeConnector>
+    <useCaseShape Id="1c95abb9-b4f1-49ae-97e6-d5173fc717ec" absoluteBounds="6.125, 5.625, 1, 0.5" customColor="238, 237, 131" heightOffset="0">
+      <useCaseMoniker Id="00617965-7193-4e32-9f5e-7f481f365815" LastKnownName="删除文章" />
+      <relativeChildShapes />
+    </useCaseShape>
+    <includeConnector edgePoints="[(4.98670858416679 : 5.68225983343139); (6.13829141583321 : 5.81774016656861)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="Black" useCaseStereotype="«包括»">
+      <includeMoniker Id="d776a3fa-9030-478a-8563-80f46e6e663c" />
+      <relativeChildShapes />
+      <nodes>
+        <useCaseShapeMoniker Id="a0e15e75-acbf-4666-9901-06783c9bf534" />
+        <useCaseShapeMoniker Id="1c95abb9-b4f1-49ae-97e6-d5173fc717ec" />
+      </nodes>
+    </includeConnector>
+    <useCaseShape Id="15ead989-faa6-4f89-870c-ae418b43d65e" absoluteBounds="4, 7.5, 1, 0.5" customColor="238, 237, 131" heightOffset="0">
+      <useCaseMoniker Id="792c7399-c24d-4abf-9305-b37adbab5912" LastKnownName="浏览文章列表" />
+      <relativeChildShapes />
+    </useCaseShape>
+    <includeConnector edgePoints="[(4.5 : 5.875); (4.5 : 7.5)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="Black" useCaseStereotype="«包括»">
+      <includeMoniker Id="034f6fce-b1a6-4c67-9af3-36193c90089a" />
+      <relativeChildShapes />
+      <nodes>
+        <useCaseShapeMoniker Id="a0e15e75-acbf-4666-9901-06783c9bf534" />
+        <useCaseShapeMoniker Id="15ead989-faa6-4f89-870c-ae418b43d65e" />
+      </nodes>
+    </includeConnector>
+    <useCaseShape Id="309dca3e-d2f4-46bc-b5d2-7cb0ca17e49a" absoluteBounds="6.5, 4.875, 1, 0.5" customColor="238, 237, 131" heightOffset="0">
+      <useCaseMoniker Id="0d50be1b-a11d-41e8-8683-93c99cb2ace6" LastKnownName="修改文章" />
+      <relativeChildShapes />
+    </useCaseShape>
+    <includeConnector edgePoints="[(4.96423834544263 : 5.53215233091147); (6.53576165455737 : 5.21784766908853)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="Black" useCaseStereotype="«包括»">
+      <includeMoniker Id="e66a7608-06d7-499a-aa5a-6a62396d3e4d" />
+      <relativeChildShapes />
+      <nodes>
+        <useCaseShapeMoniker Id="a0e15e75-acbf-4666-9901-06783c9bf534" />
+        <useCaseShapeMoniker Id="309dca3e-d2f4-46bc-b5d2-7cb0ca17e49a" />
+      </nodes>
+    </includeConnector>
+    <useCaseShape Id="6435dd95-6bee-4c33-99d1-b24b498ab975" absoluteBounds="6.375, 4.125, 1, 0.5" customColor="238, 237, 131" heightOffset="0">
+      <useCaseMoniker Id="697cdb0d-f4c1-4362-bc5a-9563ba438c6f" LastKnownName="添加文章" />
+      <relativeChildShapes />
+    </useCaseShape>
+    <includeConnector edgePoints="[(4.84437473095735 : 5.4437501416014); (6.53062526904265 : 4.5562498583986)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="Black" useCaseStereotype="«包括»">
+      <includeMoniker Id="923ce95e-a610-4486-a644-bfa02aece3e0" />
+      <relativeChildShapes />
+      <nodes>
+        <useCaseShapeMoniker Id="a0e15e75-acbf-4666-9901-06783c9bf534" />
+        <useCaseShapeMoniker Id="6435dd95-6bee-4c33-99d1-b24b498ab975" />
+      </nodes>
+    </includeConnector>
+    <useCaseShape Id="55f63076-97b1-4036-8ee0-e07f07546e1c" absoluteBounds="1, 5.375, 1, 0.5" customColor="238, 237, 131" heightOffset="0">
+      <useCaseMoniker Id="5507ccc9-be1f-4509-b5ee-0345eb014ed6" LastKnownName="收藏文章" />
+      <relativeChildShapes />
+    </useCaseShape>
+    <includeConnector edgePoints="[(4 : 5.625); (2 : 5.625)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="Black" useCaseStereotype="«包括»">
+      <includeMoniker Id="ac77b3b8-333a-4e3e-a205-a0dbfb6eb310" />
+      <relativeChildShapes />
+      <nodes>
+        <useCaseShapeMoniker Id="a0e15e75-acbf-4666-9901-06783c9bf534" />
+        <useCaseShapeMoniker Id="55f63076-97b1-4036-8ee0-e07f07546e1c" />
+      </nodes>
+    </includeConnector>
+    <useCaseShape Id="26d83b59-a0e5-4aed-ac2d-47333fcb7650" absoluteBounds="1.125, 6.125, 1, 0.5" customColor="238, 237, 131" heightOffset="0">
+      <useCaseMoniker Id="fa1847a6-e78c-4f7b-b96d-c85108fe6475" LastKnownName="未文章评分" />
+      <relativeChildShapes />
+    </useCaseShape>
+    <includeConnector edgePoints="[(4.05670757691727 : 5.74064150167376); (2.06829242308273 : 6.25935849832624)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="Black" useCaseStereotype="«包括»">
+      <includeMoniker Id="a51aa3a1-42c0-4fab-a23c-fe882b2a76c6" />
+      <relativeChildShapes />
+      <nodes>
+        <useCaseShapeMoniker Id="a0e15e75-acbf-4666-9901-06783c9bf534" />
+        <useCaseShapeMoniker Id="26d83b59-a0e5-4aed-ac2d-47333fcb7650" />
+      </nodes>
+    </includeConnector>
+  </nestedChildShapes>
+</useCaseDiagram>

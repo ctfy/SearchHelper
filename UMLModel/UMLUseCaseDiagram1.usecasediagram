@@ -1,0 +1,174 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<useCaseModelRoot xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="e4d8f22f-4a0e-4cd1-adc2-c23f298f6e0e" name="UMLUseCaseDiagram1" linkedPackageId="d10ee8e0-2032-4652-afe6-db64fdfa4da6" xmlns="http://schemas.microsoft.com/dsltools/UseCaseModel">
+  <profileInstances>
+    <packageHasProfileInstances Id="14075b58-472e-4dbe-a9ca-15b1fcd47849">
+      <profileInstance Id="8f3a1185-1157-4fd0-8b16-d9372a58ce01" name="StandardProfileL2">
+        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+      </profileInstance>
+      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="a64142cd-51ce-497f-9403-5d4f09d277e6">
+      <profileInstance Id="79bbf94b-b91f-4310-a090-47355b51c1d1" name="StandardProfileL3">
+        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+      </profileInstance>
+      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <useCaseModelRootHasTypes>
+      <actor Id="80ede889-3478-4d18-ba9b-04aae8ef25a5" name="用户" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="bea2a12a-8b0f-4a6d-8ecd-8f5c12214a62" />
+        <targetEnds>
+          <association Id="ae13303e-0e51-426c-a0a1-3bab53db468e" isDerived="false" sourceEndRoleName="用户" targetEndRoleName="管理分类" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="09b39a08-d8fe-4d52-ba09-a21ad7f53b16" LastKnownName="管理分类" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="8fb337e1-3f8b-4c26-aae9-62d6b7086b90" name="用户" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="0c1c7385-30aa-4f7e-811c-a16780b059d0" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="f11cee49-f8cb-44db-8e54-4523dd8bc5e8" name="管理分类" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="159adc12-e40d-4dbb-aaeb-56404abb3e38" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="58aaad8c-b024-4dc5-9024-f57492cded11" />
+          </association>
+          <association Id="f66d4a74-0fea-4e98-b45a-0423101dd903" isDerived="false" sourceEndRoleName="用户" targetEndRoleName="管理文章" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="7d01e021-6ee4-41f5-bfbb-cc5a0705c8a9" LastKnownName="管理文章" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="9d0cbace-e233-43ea-8d72-a36a4e995075" name="用户" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="7a4265c6-9826-4984-8d6b-1267a0cd5c1e" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="4ad876d6-4672-4394-868f-75602a98b1ad" name="管理文章" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="037b1b6b-8be9-487b-b9d0-43d1c6b7b469" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="5c07a232-565b-45b4-bd68-8676e5c366f7" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="09b39a08-d8fe-4d52-ba09-a21ad7f53b16" name="管理分类" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="451cb1b6-0b6c-4ce6-bef1-088164a14a5f" />
+        <additions>
+          <include Id="b80e68b3-6a55-44b7-aaa7-9bef3e128dc5">
+            <useCaseMoniker Id="3d700507-a7a4-4af6-a2e3-63c66da9926c" LastKnownName="浏览分类" />
+            <elementDefinition Id="833f44f3-4bb2-4ed2-aeff-d1394165294b" />
+          </include>
+          <include Id="c9f0596a-cc45-49a6-aa90-1a2cf10ba3e7">
+            <useCaseMoniker Id="053086ae-0f1d-4eb3-9788-6c2ee81b01bc" LastKnownName="添加分类" />
+            <elementDefinition Id="c1a8d95a-5b10-4d8c-8016-8f36e8882fda" />
+          </include>
+          <include Id="18227d90-4b8a-4a62-ac5d-f4352ceb3de4">
+            <useCaseMoniker Id="91a21431-5ce2-49f7-9986-b1945bfc26df" LastKnownName="修改分类" />
+            <elementDefinition Id="59d9317e-12da-4d19-bf3d-3d4200b6d8a6" />
+          </include>
+          <include Id="20ef1f51-8404-4876-ac31-91cd194db197">
+            <useCaseMoniker Id="fbc8a29d-9911-43cc-9699-98d86ff7ae5e" LastKnownName="删除分类" />
+            <elementDefinition Id="c52aaa03-2fd3-4e87-b5b0-eb9ee818be60" />
+          </include>
+        </additions>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="7d01e021-6ee4-41f5-bfbb-cc5a0705c8a9" name="管理文章" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="b1da646e-19ce-456c-a71f-19bc1f9e6952" />
+        <additions>
+          <include Id="ac77b3b8-333a-4e3e-a205-a0dbfb6eb310">
+            <useCaseMoniker Id="5507ccc9-be1f-4509-b5ee-0345eb014ed6" LastKnownName="收藏文章" />
+            <elementDefinition Id="36971cf7-7081-4eeb-9451-1443990164e8" />
+          </include>
+          <include Id="a51aa3a1-42c0-4fab-a23c-fe882b2a76c6">
+            <useCaseMoniker Id="fa1847a6-e78c-4f7b-b96d-c85108fe6475" LastKnownName="未文章评分" />
+            <elementDefinition Id="6ebc93b7-4040-4f71-8170-c972b0e75b1d" />
+          </include>
+          <include Id="034f6fce-b1a6-4c67-9af3-36193c90089a">
+            <useCaseMoniker Id="792c7399-c24d-4abf-9305-b37adbab5912" LastKnownName="浏览文章列表" />
+            <elementDefinition Id="9fd5eaae-3b43-4c7b-839d-cfbefc76c113" />
+          </include>
+          <include Id="25be4200-e3f1-4f65-bf99-8957a4b39199">
+            <useCaseMoniker Id="692cb42f-24e9-445c-b279-ce77e0206aa3" LastKnownName="浏览某篇文章" />
+            <elementDefinition Id="a5772f22-dea3-4b00-b448-089105e24647" />
+          </include>
+          <include Id="d776a3fa-9030-478a-8563-80f46e6e663c">
+            <useCaseMoniker Id="00617965-7193-4e32-9f5e-7f481f365815" LastKnownName="删除文章" />
+            <elementDefinition Id="7e48c8bb-30f3-4071-b71b-b7da04cf4279" />
+          </include>
+          <include Id="e66a7608-06d7-499a-aa5a-6a62396d3e4d">
+            <useCaseMoniker Id="0d50be1b-a11d-41e8-8683-93c99cb2ace6" LastKnownName="修改文章" />
+            <elementDefinition Id="5abb00f3-b082-4366-b5b7-96b201a26b5e" />
+          </include>
+          <include Id="923ce95e-a610-4486-a644-bfa02aece3e0">
+            <useCaseMoniker Id="697cdb0d-f4c1-4362-bc5a-9563ba438c6f" LastKnownName="添加文章" />
+            <elementDefinition Id="4c7722ac-b8c4-4cfb-a419-529505cdaacd" />
+          </include>
+        </additions>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="053086ae-0f1d-4eb3-9788-6c2ee81b01bc" name="添加分类" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="64bb84e3-4e29-4703-9eed-432499129ff0" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="3d700507-a7a4-4af6-a2e3-63c66da9926c" name="浏览分类" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="00993bf9-6e12-4ea0-97cd-aef7f85a1896" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="91a21431-5ce2-49f7-9986-b1945bfc26df" name="修改分类" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="83d0eeb3-eaf0-49ff-87f9-44490895fc89" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="fbc8a29d-9911-43cc-9699-98d86ff7ae5e" name="删除分类" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="84b3610e-b120-48cf-bf72-ea3ba433f6ae" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="692cb42f-24e9-445c-b279-ce77e0206aa3" name="浏览某篇文章" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="345f4acc-c2fb-4a74-b863-ea6a137b9441" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="00617965-7193-4e32-9f5e-7f481f365815" name="删除文章" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="d823c3b8-f075-49dc-94d9-a7ee27521e20" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="792c7399-c24d-4abf-9305-b37adbab5912" name="浏览文章列表" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="066b8c19-05a4-4926-bfc7-2307b1dec33f" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="0d50be1b-a11d-41e8-8683-93c99cb2ace6" name="修改文章" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="9b5dc895-957e-411e-bc2b-bbacec24d61f" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="697cdb0d-f4c1-4362-bc5a-9563ba438c6f" name="添加文章" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="ae58c0cb-3f71-4637-9c4f-8d030b35a887" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="5507ccc9-be1f-4509-b5ee-0345eb014ed6" name="收藏文章" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="1eb1a212-da1d-4e83-803f-fdf195484f42" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="fa1847a6-e78c-4f7b-b96d-c85108fe6475" name="未文章评分" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="8a987558-76fb-405e-bb0c-17a9ffbe08a5" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+  </packagedElements>
+  <package Id="d10ee8e0-2032-4652-afe6-db64fdfa4da6" name="UMLModel">
+    <elementDefinition Id="05edbe67-87d1-40bd-8278-1294dbd7b100" />
+  </package>
+</useCaseModelRoot>
