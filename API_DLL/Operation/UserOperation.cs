@@ -165,9 +165,9 @@ namespace ITJZ.SearchHelper.API_DLL.Operation
         /// 获取文章索引列表
         /// </summary>
         /// <param name="user"></param>
-        public string getArticleIndexList(params string[] uids)
+        public string getArticleIndexList(string uid)
         {
-            string fromUid = uids.Length > 0 ? uids[0] : CurrentUser.Guid;
+            string fromUid = uid;
 
             needLogin();
             SqlDataReader reader = SqlHelper.ExecuteReader(WebConfig.DatabaseConnectionString, CommandType.Text,
@@ -176,8 +176,10 @@ namespace ITJZ.SearchHelper.API_DLL.Operation
             XElement items = new XElement("Items");
             while (reader.Read())
             {
-                items.Add(new XElement("Guid", reader["guid"]));
-                items.Add(new XElement("Uid", fromUid));
+                items.Add(new XElement("Item",
+                    new XElement("Guid", reader["guid"]),
+                    new XElement("Uid", fromUid)
+                    ));
             }
             return new SearchHelperResponse(true, "获取文章列表成功", items).ToString();
         }

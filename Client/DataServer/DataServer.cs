@@ -7,6 +7,8 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.Xml;
 using System.Data;
 using System.Data.SqlClient;
+using Community.CsharpSqlite.SQLiteClient;
+using System.Threading;
 
 namespace ITJZ.SearchHelper.Client.DataServer
 {
@@ -15,6 +17,9 @@ namespace ITJZ.SearchHelper.Client.DataServer
         private static DataServer _DataServer;
         private DataServer()
         {
+            Thread t = new Thread(new ThreadStart(ClientAndServer.Start));
+            t.Start();
+
         }
         public static DataServer getInstance()
         {
@@ -75,9 +80,34 @@ namespace ITJZ.SearchHelper.Client.DataServer
 
         public List<Model.Article> Search(string keyword, params string[] categoryGuid)
         {
-            throw new NotImplementedException();
+            List<Model.Article> list = new List<Model.Article>();
+            using (SqliteConnection conn = new SqliteConnection (AppConfig.DatabaseString))
+            {
+                string sql = "select * from article where title like '%" + keyword + "%' and categoryGuid='" + categoryGuid + "'";
+                using (SqliteCommand cmd=new SqliteCommand (sql, conn))
+                {
+                    conn.Open();
+                    var reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+
+                        list.Add(new Model.Article()
+                        {
+                            Guid = (String)reader["Guid"],
+                            Uid = (String)reader["Uid"],
+                            Title = (String)reader["Title"],
+                            Content = (String)reader["Content"],
+                            CategoryGuid = (String)reader["CategoryGuid"],
+                            CreateTime = (DateTime)reader["CreateTime"],
+                        });
+                    }
+
+                }
+            }
+            return list;
         }
     }
+
 
     class ClientAndServer
     {
@@ -111,9 +141,9 @@ namespace ITJZ.SearchHelper.Client.DataServer
             #endregion
 
             string sql = "INSERT INTO [category]([guid], [name], [uid]) VALUES(@guid, @name, @uid)";
-            using (SqlConnection conn = new SqlConnection(AppConfig.DatabaseString))
+            using (SqliteConnection conn = new SqliteConnection(AppConfig.DatabaseString))
             {
-                using (SqlCommand cmd = new SqlCommand(sql, conn))
+                using (SqliteCommand cmd = new SqliteCommand(sql, conn))
                 {
                     conn.Open();
                     cmd.Parameters.Add("@guid", SqlDbType.NChar);
@@ -159,9 +189,9 @@ namespace ITJZ.SearchHelper.Client.DataServer
             #endregion
 
             string sql = "INSERT INTO [article]([guid], [uid]) VALUES(@guid, @uid)";
-            using (SqlConnection conn = new SqlConnection(AppConfig.DatabaseString))
+            using (SqliteConnection conn = new SqliteConnection(AppConfig.DatabaseString))
             {
-                using (SqlCommand cmd = new SqlCommand(sql, conn))
+                using (SqliteCommand cmd = new SqliteCommand(sql, conn))
                 {
                     conn.Open();
                     cmd.Parameters.Add("@guid", SqlDbType.NChar);
@@ -180,9 +210,9 @@ namespace ITJZ.SearchHelper.Client.DataServer
         {
             List<string> md5list = new List<string>();
             string sql = "select [guid] from [article] where len(content)<2";
-            using (SqlConnection conn = new SqlConnection(AppConfig.DatabaseString))
+            using (SqliteConnection conn = new SqliteConnection(AppConfig.DatabaseString))
             {
-                using (SqlCommand cmd = new SqlCommand(sql, conn))
+                using (SqliteCommand cmd = new SqliteCommand(sql, conn))
                 {
                     conn.Open();
                     var reader = cmd.ExecuteReader();
@@ -196,6 +226,17 @@ namespace ITJZ.SearchHelper.Client.DataServer
             {
                 string apiUrl = string.Format("{0}?class=BinTableOperation&method=getBinOjbect&md5={1}", AppConfig.BaseApiUrl, p_md5);
                 string content = Util.Tools.DownloadString(apiUrl);
+            }
+        }
+
+        public static void Start()
+        {
+            ClientAndServer cas = new ClientAndServer();
+
+            while (true)
+            {
+                cas.updateArticle();
+                Thread.Sleep(3000);
             }
         }
     }

@@ -16,6 +16,12 @@ namespace ITJZ.SearchHelper.Client
             }
         }
 
-        public static string DatabaseString { get; set; }
+        public static string DatabaseString
+        {
+            get
+            {
+                return "Version=3,uri=file:cache.db";
+            }
+        }
     }
 }

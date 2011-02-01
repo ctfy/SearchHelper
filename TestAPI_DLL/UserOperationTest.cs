@@ -82,7 +82,7 @@ namespace TestProject1
             UserOperation target = new UserOperation(); // TODO: 初始化为适当的值
             UserOperation.CurrentUser = login();
             string actual;
-            actual = target.getArticleIndexList();
+            actual = target.getArticleIndexList(UserOperation.CurrentUser.Guid);
             checkXmlResponse(actual);
         }
 
